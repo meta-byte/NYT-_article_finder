@@ -4,18 +4,27 @@ $(document).ready(function () {
     var startYear = $("#start-year").val().trim()
     var endYear = $("#end-year").val().trim()
 
-
-
-    function search(event) {
-        event.preventDefault();
-
+    function searchArticles() {
         $.ajax({
             url: queryURL,
-            method: "GET"
+            method: "GET",
+        }).then(function (reponse) {
+            console.log(reponse)
         })
     }
 
+    function clearFunction() {
+        $("#article-section").empty()
+    }
 
-    // $("#run-search").click()
 
-});
+    $("#run-search").click(function (event) {
+        event.preventDefault();
+        searchArticles()
+    })
+
+    $("#clear-all").click(function () {
+        clearFunction()
+    })
+
+});   
